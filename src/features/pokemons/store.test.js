@@ -1,13 +1,13 @@
-import { PokedexStore } from './store'
+import { PokemonsStore } from './store'
 import { LIMITS } from './constants'
 
-describe('PokedexStore', () => {
+describe('PokemonsStore', () => {
   beforeEach(() => {
     fetch.resetMocks()
   })
 
   it('should create an init store', () => {
-    const store = new PokedexStore()
+    const store = new PokemonsStore()
 
     expect(store.offset).toBe(0)
     expect(store.limit).toBe(LIMITS[1])
@@ -17,7 +17,7 @@ describe('PokedexStore', () => {
   })
 
   it('should update list', async () => {
-    const store = new PokedexStore()
+    const store = new PokemonsStore()
 
     fetch.mockResponses([
       JSON.stringify({ count: 1, results: [{ name: 'foobar' }] }),
@@ -31,7 +31,7 @@ describe('PokedexStore', () => {
   })
 
   it('should update name', async () => {
-    const store = new PokedexStore()
+    const store = new PokemonsStore()
 
     await store.handleSearchChange('foobar')
 
@@ -39,7 +39,7 @@ describe('PokedexStore', () => {
   })
 
   it('should change limit', async () => {
-    const store = new PokedexStore()
+    const store = new PokemonsStore()
 
     fetch.mockResponses([
       JSON.stringify({ count: 1, results: [{ name: 'foobar' }] }),
@@ -52,7 +52,7 @@ describe('PokedexStore', () => {
   })
 
   it('should change page', async () => {
-    const store = new PokedexStore()
+    const store = new PokemonsStore()
 
     fetch.mockResponses([
       JSON.stringify({ count: 1, results: [{ name: 'foobar' }] }),

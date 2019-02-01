@@ -19,25 +19,29 @@ const SearchWrapper = styled.div`
 `
 
 const enhance = compose(
-  inject('pokedexStore'),
+  inject('pokemonsStore'),
   observer,
 )
 
-const DashboardView = ({ pokedexStore }) => (
+const DashboardView = ({ pokemonsStore }) => (
   <div>
     <SearchWrapper>
-      <Search placeholder="Search" handleSearchChange={pokedexStore.handleSearchChange} value={pokedexStore.name} />
+      <Search placeholder="Search" handleSearchChange={pokemonsStore.handleSearchChange} value={pokemonsStore.name} />
     </SearchWrapper>
-    <PokemonList getPokemonList={pokedexStore.getPokemonList} list={pokedexStore.list} loading={pokedexStore.loading} />
+    <PokemonList
+      getPokemonList={pokemonsStore.getPokemonList}
+      list={pokemonsStore.list}
+      loading={pokemonsStore.loading}
+    />
     <ActionsWrapper>
-      <Pagination count={pokedexStore.pageNumber} handlePageChange={pokedexStore.handlePageChange} />
-      <PageSize items={LIMITS} handleLimitChange={pokedexStore.handleLimitChange} limit={pokedexStore.limit} />
+      <Pagination count={pokemonsStore.pageNumber} handlePageChange={pokemonsStore.handlePageChange} />
+      <PageSize items={LIMITS} handleLimitChange={pokemonsStore.handleLimitChange} limit={pokemonsStore.limit} />
     </ActionsWrapper>
   </div>
 )
 
 DashboardView.propTypes = {
-  pokedexStore: PropTypes.shape({
+  pokemonsStore: PropTypes.shape({
     getPokemonList: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     pageNumber: PropTypes.number.isRequired,

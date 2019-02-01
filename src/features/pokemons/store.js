@@ -11,7 +11,7 @@ const fakeDelay = () => {
   })
 }
 
-export class PokedexStore {
+export class PokemonsStore {
   list = Array(LIMITS[1])
     .fill(1)
     .map((_, index) => ({ name: `name-${index}` }))
@@ -74,7 +74,7 @@ export class PokedexStore {
   }
 }
 
-decorate(PokedexStore, {
+decorate(PokemonsStore, {
   list: observable,
   offset: observable,
   limit: observable,

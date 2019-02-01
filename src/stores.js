@@ -1,7 +1,7 @@
-import { PokedexStore } from './features/pokemons'
+import { PokemonsStore } from './features/pokemons'
 
-const pokedexStore = new PokedexStore()
+const pokemonsStore = new PokemonsStore()
 
 export const stores = {
-  pokedexStore,
+  pokemonsStore,
 }
