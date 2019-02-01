@@ -31,6 +31,7 @@ export class PokemonList extends PureComponent {
         {list.map(pokemon => (
           <PokemonCard pokemon={pokemon} key={pokemon.name} loading={loading} />
         ))}
+        {list.length === 0 && 'Nothing found'}
       </Wrapper>
     )
   }

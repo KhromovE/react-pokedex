@@ -19,20 +19,33 @@ export class PokedexStore {
   limit = LIMITS[1]
   count = 0
   loading = false
+  name = ''
 
   getPokemonList = async () => {
     this.loading = true
 
-    const [response] = await Promise.all([getPokemonList(this.limit, this.offset), fakeDelay()])
-    const { results, count } = response
+    if (this.name.length) {
+      const [response] = await Promise.all([getPokemon(this.name), fakeDelay()])
 
-    this.list = results
-    this.count = count
+      if (response) {
+        this.list = [response]
+        this.count = 1
+      } else {
+        this.list = []
+        this.count = 0
+      }
+    } else {
+      const [response] = await Promise.all([getPokemonList(this.limit, this.offset), fakeDelay()])
+      const { results, count } = response
 
-    const promises = results.reduce((acc, data) => [...acc, getPokemon(data.name)], [])
-    const fullDataList = await Promise.all(promises)
+      this.list = results
+      this.count = count
 
-    this.list = fullDataList
+      const promises = results.reduce((acc, data) => [...acc, getPokemon(data.name)], [])
+      const fullDataList = await Promise.all(promises)
+
+      this.list = fullDataList
+    }
 
     this.loading = false
   }
@@ -50,8 +63,14 @@ export class PokedexStore {
     await this.getPokemonList()
   }
 
+  handleSearchChange = async name => {
+    this.name = name
+
+    await this.getPokemonList()
+  }
+
   get pageNumber() {
-    return Math.floor(this.count / this.limit)
+    return Math.ceil(this.count / this.limit)
   }
 }
 

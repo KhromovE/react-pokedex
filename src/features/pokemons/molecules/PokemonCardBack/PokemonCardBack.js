@@ -11,7 +11,7 @@ const BackSide = styled.div`
   background-color: #216091;
   border: 1px solid #013078;
   position: absolute;
-  width: 100%;
+  width: calc(100% - 2px);
   height: 100%;
   backface-visibility: hidden;
   border-radius: 4px;

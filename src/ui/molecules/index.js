@@ -1,3 +1,4 @@
 export { Header } from './Header'
 export { Pagination } from './Pagination'
 export { PageSize } from './PageSize'
+export { Search } from './Search'

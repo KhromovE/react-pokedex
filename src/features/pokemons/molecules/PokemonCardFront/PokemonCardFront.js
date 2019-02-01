@@ -12,7 +12,7 @@ import { Stat } from '..'
 
 const FrontSide = styled.div`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 2px);
   height: 100%;
   backface-visibility: hidden;
   z-index: 1;
