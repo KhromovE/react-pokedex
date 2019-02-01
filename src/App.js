@@ -1,7 +1,13 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
+import { Provider } from 'mobx-react'
 
-export class App extends Component {
-  render() {
-    return <div className="App" />
-  }
-}
+import { GlobalStyle } from './global-styles'
+
+export const App = () => (
+  <Provider>
+    <Fragment>
+      <div>foobar</div>
+      <GlobalStyle />
+    </Fragment>
+  </Provider>
+)
