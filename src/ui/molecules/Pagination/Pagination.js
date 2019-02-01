@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactPaginate from 'react-paginate'
 import styled from 'styled-components'
 
-import { RED, GRAY } from '../../../colors'
+import { RED, MEDIUM_GRAY, DARK_GRAY } from '../../../colors'
 
 const Wrapper = styled.div`
   & .pagination {
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
       border-radius: 38px;
       line-height: 38px;
       padding: 0;
-      color: #000;
+      color: ${DARK_GRAY};
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
     & .next,
     & .previous {
       &:hover {
-        background-color: ${GRAY};
+        background-color: ${MEDIUM_GRAY};
       }
     }
 

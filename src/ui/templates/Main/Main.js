@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { Container } from '..'
 
 const Body = styled.main`
-  margin-top: 2rem;
   background-color: white;
   padding: 1rem;
 `

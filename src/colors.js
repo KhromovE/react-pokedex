@@ -1,3 +1,6 @@
+export const LIGHTER_GRAY = '#f8f8f8'
 export const MEDIUM_GRAY = '#f4f4f4'
-export const GRAY = '#e9e9e9'
+export const LIGHT_GRAY = '#e9e9e9'
+export const GRAY = '#b5b5b5'
+export const DARK_GRAY = '#757575'
 export const RED = '#ef5350'

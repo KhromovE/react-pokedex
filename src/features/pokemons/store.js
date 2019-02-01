@@ -5,7 +5,7 @@ import { LIMITS } from './constants'
 
 export class PokedexStore {
   list = []
-  offset = LIMITS[1]
+  offset = 0
   limit = LIMITS[1]
   count = 0
   loading = false
@@ -33,7 +33,7 @@ export class PokedexStore {
   }
 
   get pageNumber() {
-    return Math.floor(this.count / this.offset)
+    return Math.floor(this.count / this.limit)
   }
 }
 
