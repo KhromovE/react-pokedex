@@ -25,6 +25,16 @@ export class PokedexStore {
 
     this.loading = false
   }
+
+  handlePageChange = async ({ selected }) => {
+    this.offset = selected * this.limit
+
+    await this.getPokemonList()
+  }
+
+  get pageNumber() {
+    return Math.floor(this.count / this.offset)
+  }
 }
 
 decorate(PokedexStore, {
