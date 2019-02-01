@@ -6,7 +6,7 @@ import { Container } from '..'
 
 const Body = styled.main`
   background-color: white;
-  padding: 1rem;
+  padding: 1.8rem;
 `
 
 export const Main = ({ children, header }) => (

@@ -2,36 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { LIGHT_GRAY, LIGHTER_GRAY, DARK_GRAY } from '../../../../colors'
-import { Logo } from '../../../../ui/atoms'
-import { capitalize } from '../../../../lib/utils'
-import { Type } from '../../atoms'
-import { Stat } from '..'
+import { PokemonCardBack, PokemonCardFront } from '..'
 
-/* eslint-disable camelcase */
-
-const Wrapper = styled.section`
+const Card = styled.section`
   display: flex;
   flex-direction: column;
-  border: 1px solid ${LIGHT_GRAY};
-  border-radius: 4px;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-right: 1.8rem;
+  margin-bottom: 1.8rem;
   min-height: 420px;
+  perspective: 1000px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 580px) {
     width: 100%;
     margin-right: 0;
   }
-  @media (max-width: 900px) and (min-width: 500px) {
-    width: calc(50% - 1.65rem);
+  @media (max-width: 900px) and (min-width: 580px) {
+    width: calc(50% - 0.9rem);
 
     &:nth-child(2n) {
       margin-right: 0;
     }
   }
   @media (min-width: 901px) {
-    width: calc(33% - 0.62rem);
+    width: calc(33% - 1.03rem);
 
     &:nth-child(3n) {
       margin-right: 0;
@@ -39,65 +32,26 @@ const Wrapper = styled.section`
   }
 `
 
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
+const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transform: ${({ loading }) => (!loading ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 `
 
-const SpriteWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-  background-color: ${LIGHTER_GRAY};
-`
-
-const DataWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-`
-
-const TypeWrapper = styled.div`
-  display: flex;
-`
-
-const Name = styled.span`
-  color: ${DARK_GRAY};
-  font-size: 18px;
-`
-
-const StatsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1rem;
-`
-
-export const PokemonCard = ({ pokemon }) => (
-  <Wrapper>
-    <Header>
-      <Logo height="25" />
-    </Header>
-    <SpriteWrapper>{pokemon.sprites && <img src={pokemon.sprites.front_default} alt="" />}</SpriteWrapper>
-    <DataWrapper>
-      <Name>{capitalize(pokemon.name)}</Name>
-      <TypeWrapper>
-        {pokemon.types && pokemon.types.map(({ type }) => <Type key={type.name}>{type.name}</Type>)}
-      </TypeWrapper>
-    </DataWrapper>
-    <StatsWrapper>
-      {pokemon.stats &&
-        pokemon.stats.map(({ base_stat, stat }) => (
-          <Stat key={stat.name} name={stat.name}>
-            {base_stat}
-          </Stat>
-        ))}
-    </StatsWrapper>
-  </Wrapper>
+export const PokemonCard = ({ pokemon, loading }) => (
+  <Card>
+    <CardInner loading={loading}>
+      <PokemonCardBack />
+      <PokemonCardFront pokemon={pokemon} />
+    </CardInner>
+  </Card>
 )
 
 PokemonCard.propTypes = {
   pokemon: PropTypes.shape().isRequired,
+  loading: PropTypes.bool.isRequired,
 }

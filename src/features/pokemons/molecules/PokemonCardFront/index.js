@@ -1,0 +1,1 @@
+export { PokemonCardFront } from './PokemonCardFront'

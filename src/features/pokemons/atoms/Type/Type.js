@@ -29,4 +29,5 @@ export const Type = styled.section`
   border-radius: 15px;
   padding: 0 12px;
   margin-left: 5px;
+  height: 21px;
 `

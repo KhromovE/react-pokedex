@@ -3,8 +3,18 @@ import { decorate, observable, computed } from 'mobx'
 import { getPokemonList, getPokemon } from './api'
 import { LIMITS } from './constants'
 
+const fakeDelay = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve()
+    }, 600)
+  })
+}
+
 export class PokedexStore {
-  list = []
+  list = Array(LIMITS[1])
+    .fill(1)
+    .map((_, index) => ({ name: `name-${index}` }))
   offset = 0
   limit = LIMITS[1]
   count = 0
@@ -13,7 +23,8 @@ export class PokedexStore {
   getPokemonList = async () => {
     this.loading = true
 
-    const { results, count } = await getPokemonList(this.limit, this.offset)
+    const [response] = await Promise.all([getPokemonList(this.limit, this.offset), fakeDelay()])
+    const { results, count } = response
 
     this.list = results
     this.count = count

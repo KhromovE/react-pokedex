@@ -16,6 +16,7 @@ export class PokemonList extends PureComponent {
   static propTypes = {
     getPokemonList: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
+    loading: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
@@ -23,12 +24,12 @@ export class PokemonList extends PureComponent {
   }
 
   render() {
-    const { list } = this.props
+    const { list, loading } = this.props
 
     return (
       <Wrapper>
         {list.map(pokemon => (
-          <PokemonCard pokemon={pokemon} key={pokemon.name} />
+          <PokemonCard pokemon={pokemon} key={pokemon.name} loading={loading} />
         ))}
       </Wrapper>
     )

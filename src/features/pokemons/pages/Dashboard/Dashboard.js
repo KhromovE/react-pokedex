@@ -13,7 +13,7 @@ const enhance = compose(
 
 const DashboardView = ({ pokedexStore }) => (
   <div>
-    <PokemonList getPokemonList={pokedexStore.getPokemonList} list={pokedexStore.list} />
+    <PokemonList getPokemonList={pokedexStore.getPokemonList} list={pokedexStore.list} loading={pokedexStore.loading} />
     <Pagination count={pokedexStore.pageNumber} handlePageChange={pokedexStore.handlePageChange} />
   </div>
 )
@@ -24,6 +24,7 @@ DashboardView.propTypes = {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     pageNumber: PropTypes.number.isRequired,
     handlePageChange: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
   }),
 }
 
