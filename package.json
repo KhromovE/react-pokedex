@@ -42,7 +42,10 @@
     ],
     "globals": {
       "fetch": false,
-      "it": false
+      "it": false,
+      "describe": false,
+      "expect": false,
+      "beforeEach": false
     },
     "rules": {
       "prettier/prettier": [
@@ -72,6 +75,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
+    "jest-fetch-mock": "^2.1.0",
     "prettier": "^1.16.3"
   }
 }
