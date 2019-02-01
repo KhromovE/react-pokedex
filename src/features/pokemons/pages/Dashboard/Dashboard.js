@@ -1,10 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
+import styled from 'styled-components'
 
 import { compose } from '../../../../lib/utils'
 import { PokemonList } from '../../organisms'
-import { Pagination } from '../../../../ui/molecules'
+import { Pagination, PageSize } from '../../../../ui/molecules'
+import { LIMITS } from '../../constants'
+
+const ActionsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+`
 
 const enhance = compose(
   inject('pokedexStore'),
@@ -14,7 +22,10 @@ const enhance = compose(
 const DashboardView = ({ pokedexStore }) => (
   <div>
     <PokemonList getPokemonList={pokedexStore.getPokemonList} list={pokedexStore.list} loading={pokedexStore.loading} />
-    <Pagination count={pokedexStore.pageNumber} handlePageChange={pokedexStore.handlePageChange} />
+    <ActionsWrapper>
+      <Pagination count={pokedexStore.pageNumber} handlePageChange={pokedexStore.handlePageChange} />
+      <PageSize items={LIMITS} handleLimitChange={pokedexStore.handleLimitChange} />
+    </ActionsWrapper>
   </div>
 )
 
@@ -25,6 +36,7 @@ DashboardView.propTypes = {
     pageNumber: PropTypes.number.isRequired,
     handlePageChange: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
+    handleLimitChange: PropTypes.func.isRequired,
   }),
 }
 

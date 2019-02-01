@@ -43,6 +43,13 @@ export class PokedexStore {
     await this.getPokemonList()
   }
 
+  handleLimitChange = async limit => {
+    this.limit = limit
+    this.offset = 0
+
+    await this.getPokemonList()
+  }
+
   get pageNumber() {
     return Math.floor(this.count / this.limit)
   }

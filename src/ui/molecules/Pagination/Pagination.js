@@ -10,7 +10,6 @@ const Wrapper = styled.div`
     list-style: none;
     padding-left: 0;
     display: flex;
-    justify-content: center;
 
     & .next,
     & .previous {
