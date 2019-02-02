@@ -10,6 +10,10 @@ export const Wrapper = styled.header`
   align-items: center;
   height: 70px;
   background-color: #ef5350;
+
+  @media (max-width: 580px) {
+    padding-left: 1rem;
+  }
 `
 
 export const Header = () => (

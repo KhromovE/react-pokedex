@@ -16,7 +16,7 @@ const Card = styled.section`
     width: 100%;
     margin-right: 0;
   }
-  @media (max-width: 900px) and (min-width: 580px) {
+  @media (max-width: 900px) and (min-width: 581px) {
     width: calc(50% - 0.9rem);
 
     &:nth-child(2n) {

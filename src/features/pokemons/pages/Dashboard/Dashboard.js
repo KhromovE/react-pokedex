@@ -13,6 +13,10 @@ const ActionsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 0.5rem;
+
+  @media (max-width: 640px) {
+    justify-content: center;
+  }
 `
 
 const SearchWrapper = styled.div`

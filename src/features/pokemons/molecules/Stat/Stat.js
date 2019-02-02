@@ -7,7 +7,7 @@ import { GRAY, DARK_GRAY } from '../../../../colors'
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  width: calc(50%);
+  width: 50%;
 `
 
 const Label = styled.span`

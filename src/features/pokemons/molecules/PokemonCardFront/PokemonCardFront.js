@@ -12,7 +12,8 @@ import { Stat } from '..'
 
 const FrontSide = styled.div`
   position: absolute;
-  width: calc(100% - 2px);
+  box-sizing: border-box;
+  width: 100%;
   height: 100%;
   backface-visibility: hidden;
   z-index: 1;

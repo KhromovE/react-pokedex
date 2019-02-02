@@ -13,6 +13,7 @@ const Input = styled.input`
   border-radius: 4px;
   max-width: 400px;
   width: 100%;
+  box-sizing: border-box;
 `
 
 export class Search extends PureComponent {

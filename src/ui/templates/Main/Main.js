@@ -7,6 +7,10 @@ import { Container } from '..'
 const Body = styled.main`
   background-color: white;
   padding: 1.8rem;
+
+  @media (max-width: 580px) {
+    padding: 1.8rem 1rem;
+  }
 `
 
 export const Main = ({ children, header }) => (

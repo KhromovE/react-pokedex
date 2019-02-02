@@ -11,11 +11,6 @@ const Wrapper = styled.div`
     padding-left: 0;
     display: flex;
 
-    & .next,
-    & .previous {
-      width: 80px;
-    }
-
     & .item,
     & .next,
     & .previous {
@@ -31,6 +26,7 @@ const Wrapper = styled.div`
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
+      min-width: 38px;
 
       & > a {
         display: block;
@@ -50,8 +46,6 @@ const Wrapper = styled.div`
     }
 
     & .page {
-      min-width: 38px;
-
       &.active {
         background-color: ${RED};
         color: #fff;
@@ -65,8 +59,8 @@ const enhance = memo
 export const PaginationView = ({ count, handlePageChange }) => (
   <Wrapper>
     <ReactPaginate
-      previousLabel={'prev'}
-      nextLabel={'next'}
+      previousLabel={'<'}
+      nextLabel={'>'}
       breakLabel={'...'}
       breakClassName={'break-me item'}
       pageCount={count}
