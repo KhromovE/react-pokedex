@@ -1,3 +1,3 @@
 # react-pokedex
 
-[DEMO](https://build-udldeijiyl.now.sh/)
+[DEMO](https://khromove.github.io/react-pokedex/)
