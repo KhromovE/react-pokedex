@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const TYPE_COLORS = {
   normal: '#a7a971',
-  figthing: '#d1181b',
+  fighting: '#d1181b',
   flying: '#ad8cf7',
   poison: '#ad33a5',
   ground: '#e6c057',
@@ -18,6 +18,7 @@ export const TYPE_COLORS = {
   ice: '#84dad9',
   dragon: '#7b25ff',
   dark: '#735745',
+  fairy: '#ffa4ff',
 }
 
 export const Type = styled.section`
