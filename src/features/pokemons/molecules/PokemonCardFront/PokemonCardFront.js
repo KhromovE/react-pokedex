@@ -16,10 +16,11 @@ const FrontSide = styled.div`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  z-index: 1;
+  z-index: 2;
   transform: rotateY(180deg);
   border: 1px solid ${LIGHT_GRAY};
   border-radius: 4px;
+  background-color: white;
 `
 
 const Header = styled.div`

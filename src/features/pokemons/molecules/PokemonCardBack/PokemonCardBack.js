@@ -7,7 +7,7 @@ const BackSide = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  z-index: 2;
+  z-index: 1;
   background-color: #216091;
   border: 1px solid #013078;
   position: absolute;
