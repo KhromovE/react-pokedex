@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 
 import { Logo } from '../../../../ui/atoms'
@@ -33,7 +33,7 @@ const LogoWrapper = styled.div`
   }
 `
 
-export const PokemonCardBack = () => (
+export const PokemonCardBackView = () => (
   <BackSide>
     <LogoWrapper>
       <Logo />
@@ -43,3 +43,5 @@ export const PokemonCardBack = () => (
     </LogoWrapper>
   </BackSide>
 )
+
+export const PokemonCardBack = memo(PokemonCardBackView)

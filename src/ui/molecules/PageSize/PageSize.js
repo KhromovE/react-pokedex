@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -40,7 +40,7 @@ const Item = styled.a`
   }
 `
 
-export const PageSize = ({ items, handleLimitChange, limit }) => (
+export const PageSizeView = ({ items, handleLimitChange, limit }) => (
   <Wrapper>
     <Label>Page size:</Label>
     {items.map(item => (
@@ -62,12 +62,14 @@ export const PageSize = ({ items, handleLimitChange, limit }) => (
   </Wrapper>
 )
 
-PageSize.propTypes = {
+PageSizeView.propTypes = {
   items: PropTypes.arrayOf(PropTypes.number),
   handleLimitChange: PropTypes.func.isRequired,
   limit: PropTypes.number.isRequired,
 }
 
-PageSize.defaultProps = {
+PageSizeView.defaultProps = {
   items: [],
 }
+
+export const PageSize = memo(PageSizeView)

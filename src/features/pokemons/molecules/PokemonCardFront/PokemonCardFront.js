@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -59,7 +59,7 @@ const StatsWrapper = styled.div`
   padding: 1rem;
 `
 
-export const PokemonCardFront = ({ pokemon }) => (
+export const PokemonCardFrontView = ({ pokemon }) => (
   <FrontSide>
     <Header>
       <Logo height="25" />
@@ -82,6 +82,8 @@ export const PokemonCardFront = ({ pokemon }) => (
   </FrontSide>
 )
 
-PokemonCardFront.propTypes = {
+PokemonCardFrontView.propTypes = {
   pokemon: PropTypes.shape().isRequired,
 }
+
+export const PokemonCardFront = memo(PokemonCardFrontView)

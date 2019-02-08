@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -13,7 +13,7 @@ const Body = styled.main`
   }
 `
 
-export const Main = ({ children, header }) => (
+export const MainView = ({ children, header }) => (
   <Fragment>
     {header}
     <Container>
@@ -22,7 +22,9 @@ export const Main = ({ children, header }) => (
   </Fragment>
 )
 
-Main.propTypes = {
+MainView.propTypes = {
   children: PropTypes.node.isRequired,
   header: PropTypes.node.isRequired,
 }
+
+export const Main = memo(MainView)

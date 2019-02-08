@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -42,7 +42,7 @@ const CardInner = styled.div`
   transform: ${({ loading }) => (!loading ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 `
 
-export const PokemonCard = ({ pokemon, loading }) => (
+export const PokemonCardView = ({ pokemon, loading }) => (
   <Card>
     <CardInner loading={loading}>
       <PokemonCardBack />
@@ -51,7 +51,9 @@ export const PokemonCard = ({ pokemon, loading }) => (
   </Card>
 )
 
-PokemonCard.propTypes = {
+PokemonCardView.propTypes = {
   pokemon: PropTypes.shape().isRequired,
   loading: PropTypes.bool.isRequired,
 }
+
+export const PokemonCard = memo(PokemonCardView)

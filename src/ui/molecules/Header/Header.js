@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 
 import { Container } from '../../templates'
@@ -16,10 +16,12 @@ export const Wrapper = styled.header`
   }
 `
 
-export const Header = () => (
+export const HeaderView = () => (
   <Wrapper>
     <Container>
       <Logo />
     </Container>
   </Wrapper>
 )
+
+export const Header = memo(HeaderView)

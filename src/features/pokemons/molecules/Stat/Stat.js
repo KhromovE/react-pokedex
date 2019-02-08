@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -22,14 +22,16 @@ const Value = styled.span`
   margin-bottom: 0.8rem;
 `
 
-export const Stat = ({ children, name }) => (
+export const StatView = ({ children, name }) => (
   <Wrapper>
     <Label>{name}</Label>
     <Value>{children}</Value>
   </Wrapper>
 )
 
-Stat.propTypes = {
+StatView.propTypes = {
   children: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 }
+
+export const Stat = memo(StatView)
