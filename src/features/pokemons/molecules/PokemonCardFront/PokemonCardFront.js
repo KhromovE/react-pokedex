@@ -64,7 +64,7 @@ export const PokemonCardFrontView = ({ pokemon }) => (
     <Header>
       <Logo height="25" />
     </Header>
-    <SpriteWrapper>{pokemon.sprites && <img src={pokemon.sprites.front_default} alt="" />}</SpriteWrapper>
+    <SpriteWrapper>{pokemon.image && <img src={pokemon.image} alt="" />}</SpriteWrapper>
     <DataWrapper>
       <Name>{capitalize(pokemon.name)}</Name>
       <TypeWrapper>
