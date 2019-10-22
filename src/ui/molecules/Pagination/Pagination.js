@@ -61,16 +61,16 @@ export const PaginationView = ({ count, handlePageChange }) => (
     <ReactPaginate
       previousLabel={'<'}
       nextLabel={'>'}
-      breakLabel={'...'}
-      breakClassName={'break-me item'}
+      breakLabel="..."
+      breakClassName="break-me item"
       pageCount={count}
       onPageChange={handlePageChange}
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
-      containerClassName={'pagination'}
-      pageClassName={'item page'}
-      subContainerClassName={'pages pagination'}
-      activeClassName={'active'}
+      containerClassName="pagination"
+      pageClassName="item page"
+      subContainerClassName="pages pagination"
+      activeClassName="active"
     />
   </Wrapper>
 )

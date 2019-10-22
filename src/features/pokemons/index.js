@@ -1,3 +1,4 @@
 export { getPokemonList } from './api'
-export { Dashboard } from './pages'
+export { PokemonList } from './organisms'
 export { PokemonsStore } from './store'
+export { LIMITS } from './constants'

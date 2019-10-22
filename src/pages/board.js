@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import styled from 'styled-components'
 
-import { compose } from '../../../../lib/utils'
-import { PokemonList } from '../../organisms'
-import { Pagination, PageSize, Search } from '../../../../ui/molecules'
-import { LIMITS } from '../../constants'
+import { compose } from '../lib/utils'
+import { PokemonList, LIMITS } from '../features/pokemons'
+import { Pagination, PageSize, Search } from '../ui/molecules'
 
 const ActionsWrapper = styled.div`
   display: flex;
@@ -28,8 +27,8 @@ const enhance = compose(
   observer,
 )
 
-const DashboardView = ({ pokemonsStore }) => (
-  <div>
+const BoardView = ({ pokemonsStore }) => (
+  <>
     <SearchWrapper>
       <Search placeholder="Search" handleSearchChange={pokemonsStore.handleSearchChange} value={pokemonsStore.name} />
     </SearchWrapper>
@@ -42,10 +41,10 @@ const DashboardView = ({ pokemonsStore }) => (
       <Pagination count={pokemonsStore.pageNumber} handlePageChange={pokemonsStore.handlePageChange} />
       <PageSize items={LIMITS} handleLimitChange={pokemonsStore.handleLimitChange} limit={pokemonsStore.limit} />
     </ActionsWrapper>
-  </div>
+  </>
 )
 
-DashboardView.propTypes = {
+BoardView.propTypes = {
   pokemonsStore: PropTypes.shape({
     getPokemonList: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -56,7 +55,7 @@ DashboardView.propTypes = {
     handleSearchChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
     limit: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
 }
 
-export const Dashboard = enhance(DashboardView)
+export const Board = enhance(BoardView)

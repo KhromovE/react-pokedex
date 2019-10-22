@@ -1,20 +1,20 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Provider } from 'mobx-react'
 
 import { Main } from './ui/templates'
-import { Dashboard } from './features/pokemons'
+import { Board } from './pages/board'
 import { Header } from './ui/molecules'
 import { stores } from './stores'
 import { GlobalStyle } from './global-styles'
 
 export const App = () => (
-  <Provider {...stores}>
-    <Fragment>
+  <Provider pokemonsStore={stores.pokemonsStore}>
+    <>
       <Main header={<Header />}>
-        <Dashboard />
+        <Board />
       </Main>
       <GlobalStyle />
-    </Fragment>
+    </>
   </Provider>
 )
 

@@ -3,7 +3,7 @@ import { GET } from './constants'
 const baseUrl = 'https://pokeapi.co/api/v2/'
 
 const callApi = async (type = GET, path, data = {}) => {
-  let url = new URL(baseUrl + path)
+  const url = new URL(baseUrl + path)
 
   if (type === GET) {
     url.search = new URLSearchParams(data)

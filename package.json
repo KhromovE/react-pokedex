@@ -4,14 +4,17 @@
   "private": true,
   "homepage": "https://khromove.github.io/react-pokedex/",
   "dependencies": {
+    "effector": "^20.2.1",
+    "effector-react": "^20.3.0",
     "lodash.debounce": "^4.0.8",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-paginate": "^6.2.1",
-    "react-scripts": "2.1.3",
-    "styled-components": "^4.1.3"
+    "react-scripts": "^3.2.0",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,67 +22,25 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint './**/*.js'",
+    "lint:fix": "eslint './**/*.js' --fix"
   },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "browser": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "extends": [
-      "standard",
-      "plugin:react/recommended",
-      "prettier",
-      "prettier/react"
-    ],
-    "plugins": [
-      "standard",
-      "react",
-      "jsx-a11y",
-      "import",
-      "prettier"
-    ],
-    "globals": {
-      "fetch": false,
-      "it": false,
-      "describe": false,
-      "expect": false,
-      "beforeEach": false
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "trailingComma": "all",
-          "singleQuote": true,
-          "printWidth": 120,
-          "semi": false
-        }
-      ]
-    }
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-standard": "^4.0.0",
-    "gh-pages": "^2.0.1",
-    "jest-fetch-mock": "^2.1.0",
-    "prettier": "^1.16.3"
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.1.1",
+    "jest-fetch-mock": "^2.1.2",
+    "prettier": "^1.18.2"
   }
 }

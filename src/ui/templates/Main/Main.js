@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -14,12 +14,12 @@ const Body = styled.main`
 `
 
 export const MainView = ({ children, header }) => (
-  <Fragment>
+  <>
     {header}
     <Container>
       <Body>{children}</Body>
     </Container>
-  </Fragment>
+  </>
 )
 
 MainView.propTypes = {

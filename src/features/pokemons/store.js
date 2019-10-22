@@ -15,10 +15,15 @@ export class PokemonsStore {
   list = Array(LIMITS[1])
     .fill(1)
     .map((_, index) => ({ name: `name-${index}` }))
+
   offset = 0
+
   limit = LIMITS[1]
+
   count = 0
+
   loading = false
+
   name = ''
 
   getPokemonList = async () => {
