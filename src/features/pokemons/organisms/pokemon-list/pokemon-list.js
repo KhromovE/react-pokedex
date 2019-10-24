@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { PokemonCard } from '../../molecules'
+import { loadPokemonsList } from '../../model/pokemons'
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const Wrapper = styled.div`
 export const PokemonList = ({ list, loading, getPokemonList }) => {
   useEffect(() => {
     getPokemonList()
+    loadPokemonsList()
   }, [getPokemonList])
   return (
     <Wrapper>

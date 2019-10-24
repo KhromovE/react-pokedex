@@ -2,14 +2,7 @@ import { decorate, observable, computed } from 'mobx'
 
 import { getPokemonList, getPokemon } from './api'
 import { LIMITS } from './constants'
-
-const fakeDelay = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve()
-    }, 600)
-  })
-}
+import { fakeDelay } from '../../lib/utils'
 
 export class PokemonsStore {
   list = Array(LIMITS[1])
