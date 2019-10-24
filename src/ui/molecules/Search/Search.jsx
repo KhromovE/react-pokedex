@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import debounce from 'lodash.debounce'
@@ -16,30 +16,25 @@ const Input = styled.input`
   box-sizing: border-box;
 `
 
-export class Search extends PureComponent {
-  static propTypes = {
-    placeholder: PropTypes.string.isRequired,
-    handleSearchChange: PropTypes.func.isRequired,
-  }
+export const Search = ({ placeholder, handleSearchChange }) => {
+  const [value, setValue] = useState('')
 
-  state = {
-    value: '',
-  }
+  const debouncedSearchChange = useCallback(debounce(handleSearchChange, 400), [handleSearchChange])
 
-  handleInputChange = e => {
-    const value = e.target.value
+  const handleInputChange = useCallback(
+    e => {
+      const { value: inputValue } = e.target
 
-    this.setState({ value }, () => {
-      this.handleSearchChange(value)
-    })
-  }
+      setValue(inputValue)
+      debouncedSearchChange(inputValue)
+    },
+    [debouncedSearchChange],
+  )
 
-  handleSearchChange = debounce(this.props.handleSearchChange, 400)
+  return <Input value={value} placeholder={placeholder} onChange={handleInputChange} />
+}
 
-  render() {
-    const { value } = this.state
-    const { placeholder } = this.props
-
-    return <Input value={value} placeholder={placeholder} onChange={this.handleInputChange} />
-  }
+Search.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
 }

@@ -22,7 +22,7 @@ export class PokemonsStore {
 
   count = 0
 
-  loading = false
+  loading = true
 
   name = ''
 

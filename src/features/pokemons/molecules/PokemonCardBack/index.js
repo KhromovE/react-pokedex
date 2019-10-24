@@ -1,1 +1,0 @@
-export { PokemonCardBack } from './PokemonCardBack'

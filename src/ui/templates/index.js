@@ -1,2 +1,2 @@
-export { Main } from './Main'
-export { Container } from './Container'
+export { Main } from './main'
+export { Container } from './container'

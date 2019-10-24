@@ -1,4 +1,4 @@
-export { PokemonCard } from './PokemonCard'
-export { Stat } from './Stat'
-export { PokemonCardBack } from './PokemonCardBack'
-export { PokemonCardFront } from './PokemonCardFront'
+export { PokemonCard } from './pokemon-card'
+export { Stat } from './stat'
+export { PokemonCardBack } from './pokemon-card-back'
+export { PokemonCardFront } from './pokemon-card-front'

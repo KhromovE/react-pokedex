@@ -8,8 +8,6 @@ import { capitalize } from '../../../../lib/utils'
 import { Type } from '../../atoms'
 import { Stat } from '..'
 
-/* eslint-disable camelcase */
-
 const FrontSide = styled.div`
   position: absolute;
   box-sizing: border-box;
@@ -73,9 +71,9 @@ export const PokemonCardFrontView = ({ pokemon }) => (
     </DataWrapper>
     <StatsWrapper>
       {pokemon.stats &&
-        pokemon.stats.map(({ base_stat, stat }) => (
+        pokemon.stats.map(({ baseStat, stat }) => (
           <Stat key={stat.name} name={stat.name}>
-            {base_stat}
+            {baseStat}
           </Stat>
         ))}
     </StatsWrapper>
