@@ -1,26 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components'
 
 import { compose } from '../lib/utils'
 import { PokemonList, LIMITS } from '../features/pokemons'
-import { Pagination, PageSize, Search } from '../ui/molecules'
-
-const ActionsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-
-  @media (max-width: 640px) {
-    justify-content: center;
-  }
-`
-
-const SearchWrapper = styled.div`
-  margin-bottom: 1.5rem;
-`
+import { Pagination, PageSize, Search, Header } from '../ui/molecules'
+import { Main, ActionsWrapper, SearchContainer } from '../ui/templates'
 
 const enhance = compose(
   inject('pokemonsStore'),
@@ -28,10 +13,10 @@ const enhance = compose(
 )
 
 const BoardView = ({ pokemonsStore }) => (
-  <>
-    <SearchWrapper>
+  <Main header={<Header />}>
+    <SearchContainer>
       <Search placeholder="Search" handleSearchChange={pokemonsStore.handleSearchChange} value={pokemonsStore.name} />
-    </SearchWrapper>
+    </SearchContainer>
     <PokemonList
       getPokemonList={pokemonsStore.getPokemonList}
       list={pokemonsStore.list}
@@ -41,7 +26,7 @@ const BoardView = ({ pokemonsStore }) => (
       <Pagination count={pokemonsStore.pageNumber} handlePageChange={pokemonsStore.handlePageChange} />
       <PageSize items={LIMITS} handleLimitChange={pokemonsStore.handleLimitChange} limit={pokemonsStore.limit} />
     </ActionsWrapper>
-  </>
+  </Main>
 )
 
 BoardView.propTypes = {
