@@ -1,4 +1,4 @@
-import { createStore, createEvent, clearNode } from 'effector'
+import { createStore, createEvent } from 'effector'
 
 export const STATUSES = {
   INITIAL: 'initial',
@@ -28,21 +28,10 @@ export const createFetching = (effect, initialStatus = STATUSES.INITIAL, params 
     .on(effect.fail, () => STATUSES.FAIL)
     .on(customReset, () => STATUSES.INITIAL)
 
-  const isDone = status.map(state => state === STATUSES.DONE)
-  const isFailed = status.map(state => state === STATUSES.FAIL)
-  const isLoading = status.map(state => state === STATUSES.LOADING)
-  const isInitial = status.map(state => state === STATUSES.INITIAL)
+  const $isDone = status.map(state => state === STATUSES.DONE)
+  const $isFailed = status.map(state => state === STATUSES.FAIL)
+  const $isLoading = status.map(state => state === STATUSES.LOADING)
+  const $isInitial = status.map(state => state === STATUSES.INITIAL)
 
-  const clear = () => {
-    clearNode(customReset)
-    clearNode(result)
-    clearNode(error)
-    clearNode(status)
-    clearNode(isDone)
-    clearNode(isFailed)
-    clearNode(isLoading)
-    clearNode(isInitial)
-  }
-
-  return { result, error, status, isDone, isFailed, isLoading, isInitial, clear }
+  return { result, error, status, $isDone, $isFailed, $isLoading, $isInitial }
 }

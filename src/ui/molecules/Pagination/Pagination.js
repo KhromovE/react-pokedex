@@ -64,7 +64,7 @@ export const PaginationView = ({ count, handlePageChange }) => (
       breakLabel="..."
       breakClassName="break-me item"
       pageCount={count}
-      onPageChange={handlePageChange}
+      onPageChange={({ selected }) => handlePageChange(selected)}
       marginPagesDisplayed={1}
       pageRangeDisplayed={3}
       containerClassName="pagination"

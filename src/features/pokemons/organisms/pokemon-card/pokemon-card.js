@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { PokemonCardBack, PokemonCardFront } from '..'
+import { PokemonCardBack, PokemonCardFront } from '../../molecules'
 
 const Card = styled.section`
   display: flex;
@@ -39,12 +39,12 @@ const CardInner = styled.div`
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  transform: ${({ loading }) => (!loading ? 'rotateY(180deg)' : 'rotateY(0deg)')};
+  transform: ${({ isLoading }) => (!isLoading ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 `
 
-export const PokemonCardView = ({ pokemon, loading }) => (
+export const PokemonCardView = ({ pokemon, isLoading }) => (
   <Card>
-    <CardInner loading={loading}>
+    <CardInner isLoading={isLoading}>
       <PokemonCardBack />
       <PokemonCardFront pokemon={pokemon} />
     </CardInner>
@@ -53,7 +53,7 @@ export const PokemonCardView = ({ pokemon, loading }) => (
 
 PokemonCardView.propTypes = {
   pokemon: PropTypes.shape().isRequired,
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export const PokemonCard = memo(PokemonCardView)
