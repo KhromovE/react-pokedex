@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { LIGHT_GRAY, LIGHTER_GRAY, DARK_GRAY } from '../../../../colors'
 import { Logo } from '../../../../ui/atoms'
 import { capitalize } from '../../../../lib/utils'
 import { Type } from '../../atoms'
@@ -16,9 +15,9 @@ const FrontSide = styled.div`
   backface-visibility: hidden;
   z-index: 2;
   transform: rotateY(180deg);
-  border: 1px solid ${LIGHT_GRAY};
+  border: 1px solid ${({ theme }) => theme.lightGray};
   border-radius: 4px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.white};
 `
 
 const Header = styled.div`
@@ -33,7 +32,7 @@ const SpriteWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 120px;
-  background-color: ${LIGHTER_GRAY};
+  background-color: ${({ theme }) => theme.lighterGray};
 `
 
 const DataWrapper = styled.div`
@@ -47,7 +46,6 @@ const TypeWrapper = styled.div`
 `
 
 const Name = styled.span`
-  color: ${DARK_GRAY};
   font-size: 18px;
 `
 

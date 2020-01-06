@@ -6,13 +6,15 @@ import { Main, ActionsWrapper, SearchContainer } from '../../ui/templates'
 import { PokemonList, LIMITS } from '../../features/pokemons'
 
 import {
+  pageIsLoaded,
+  paginationClicked,
+  pageSizeChanged,
+  searchFieldChanged,
   $list,
   $listIsLoading,
   $pageNumber,
   $pageLimit,
-  pageIsLoaded,
-  paginationWasClicked,
-  pageSizeWasChanged,
+  $searchValue,
 } from './model'
 
 export const Board = () => {
@@ -20,20 +22,17 @@ export const Board = () => {
   const isLoading = useStore($listIsLoading)
   const pageNumber = useStore($pageNumber)
   const pageLimit = useStore($pageLimit)
+  const searchValue = useStore($searchValue)
 
   return (
     <Main header={<Header />}>
       <SearchContainer>
-        <Search
-          placeholder="Search"
-          handleSearchChange={() => {}}
-          // value={pokemonsStore.name}
-        />
+        <Search placeholder="Search" handleSearchChange={searchFieldChanged} value={searchValue} />
       </SearchContainer>
       <PokemonList getPokemonList={pageIsLoaded} list={list} isLoading={isLoading} />
       <ActionsWrapper>
-        <Pagination count={pageNumber} handlePageChange={paginationWasClicked} />
-        <PageSize items={LIMITS} handleLimitChange={pageSizeWasChanged} limit={pageLimit} />
+        <Pagination count={pageNumber} handlePageChange={paginationClicked} />
+        <PageSize items={LIMITS} handleLimitChange={pageSizeChanged} limit={pageLimit} />
       </ActionsWrapper>
     </Main>
   )

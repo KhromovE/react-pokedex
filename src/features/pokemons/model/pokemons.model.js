@@ -1,12 +1,21 @@
-import { createEffect, sample, forward, combine } from 'effector'
+import { createEffect, sample, forward, combine, createStore } from 'effector'
 
 import { getPokemonList, getPokemon } from '../api'
 import { changeCount } from './pagination.events'
-import { $offset, $limit } from './pagination.stores'
+import { $offset, $limit } from './pagination.model'
 import { arrayToHashMap } from '../../../lib/utils'
-import { $pokemonsList } from './pokemons.stores'
 import { loadPokemonsList } from './pokemons.events'
 import { createFetching, STATUSES } from '../../../lib/fetching'
+import { LIMITS } from '../constants'
+
+const prepareList = (count = 0) => {
+  return Array(count)
+    .fill(1)
+    .reduce((acc, _, index) => ({ ...acc, [index]: { name: `name-${index}` } }), {})
+}
+
+const initList = prepareList(LIMITS[0])
+export const $pokemonsList = createStore(initList)
 
 const fxLoadPokemonList = createEffect({
   handler: async params => {

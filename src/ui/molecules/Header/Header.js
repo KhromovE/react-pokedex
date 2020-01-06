@@ -9,7 +9,7 @@ export const Wrapper = styled.header`
   justify-content: flex-start;
   align-items: center;
   height: 70px;
-  background-color: #ef5350;
+  background-color: ${({ theme }) => theme.red};
 
   @media (max-width: 580px) {
     padding-left: 1rem;

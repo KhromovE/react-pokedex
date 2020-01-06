@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { DARK_GRAY, MEDIUM_GRAY, RED } from '../../../colors'
+import { RED } from '../../../colors'
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   text-decoration: none;
   text-transform: uppercase;
   padding: 0;
-  color: ${DARK_GRAY};
+  color: ${({ theme }) => theme.darkGray};
 `
 
 const Label = styled.span`
@@ -29,14 +29,14 @@ const Item = styled.a`
   border-radius: 38px;
   line-height: 38px;
   padding: 0;
-  color: ${({ selected }) => (selected ? 'white' : DARK_GRAY)};
+  color: ${({ selected, theme }) => (selected ? theme.white : theme.darkGray)};
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: ${({ selected }) => (selected ? RED : 'none')}
+  background-color: ${({ selected }) => (selected ? RED : 'none')};
 
   &:hover {
-    background-color: ${({ selected }) => (selected ? RED : MEDIUM_GRAY)};
+    background-color: ${({ selected, theme }) => (selected ? RED : theme.mediumGray)};
   }
 `
 

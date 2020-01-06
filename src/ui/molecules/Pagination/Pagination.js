@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import ReactPaginate from 'react-paginate'
 import styled from 'styled-components'
 
-import { RED, MEDIUM_GRAY, DARK_GRAY } from '../../../colors'
-
 const Wrapper = styled.div`
   & .pagination {
     list-style: none;
@@ -22,7 +20,6 @@ const Wrapper = styled.div`
       border-radius: 38px;
       line-height: 38px;
       padding: 0;
-      color: ${DARK_GRAY};
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -30,10 +27,6 @@ const Wrapper = styled.div`
 
       & > a {
         display: block;
-
-        &:focus {
-          outline: 0;
-        }
       }
     }
 
@@ -41,14 +34,14 @@ const Wrapper = styled.div`
     & .next,
     & .previous {
       &:hover {
-        background-color: ${MEDIUM_GRAY};
+        background-color: ${({ theme }) => theme.mediumGray};
       }
     }
 
     & .page {
       &.active {
-        background-color: ${RED};
-        color: #fff;
+        background-color: ${({ theme }) => theme.red};
+        color: ${({ theme }) => theme.white};
       }
     }
   }

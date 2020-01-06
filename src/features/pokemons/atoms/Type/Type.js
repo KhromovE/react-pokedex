@@ -25,7 +25,7 @@ export const Type = styled.section`
   display: flex;
   align-items: center;
   background-color: ${({ children }) => TYPE_COLORS[children]};
-  color: white;
+  color: ${({ theme }) => theme.white};
   font-size: 14px;
   border-radius: 15px;
   padding: 0 12px;

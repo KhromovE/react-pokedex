@@ -1,17 +1,15 @@
 import React from 'react'
-import { Provider } from 'mobx-react'
+import { ThemeProvider } from 'styled-components'
 
 import { Board } from './pages'
-import { stores } from './stores'
 import { GlobalStyle } from './global-styles'
+import { theme } from './theme'
 
 export const App = () => (
-  <Provider pokemonsStore={stores.pokemonsStore}>
-    <>
-      <Board />
-      <GlobalStyle />
-    </>
-  </Provider>
+  <ThemeProvider theme={theme}>
+    <Board />
+    <GlobalStyle />
+  </ThemeProvider>
 )
 
 export default App

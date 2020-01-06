@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Container } from '..'
 
 const Body = styled.main`
-  background-color: white;
+  background-color: ${({ theme }) => theme.white};
   padding: 1.8rem;
 
   @media (max-width: 580px) {
