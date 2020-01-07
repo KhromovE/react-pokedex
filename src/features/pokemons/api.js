@@ -1,11 +1,11 @@
 import { get } from '../shared'
 
 export const getPokemonList = ({ limit, offset }) => get('pokemon', { limit, offset })
-export const getPokemon = async name => {
+export const getPokemon = async query => {
   let data
 
   try {
-    const { sprites, types, stats } = await get(`pokemon/${name}`)
+    const { sprites, types, stats, name } = await get(`pokemon/${query}`)
 
     data = {
       image: sprites.frontDefault,

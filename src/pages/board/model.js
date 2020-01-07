@@ -9,15 +9,14 @@ import {
   pokemonListFetching,
   changeOffset,
   changeLimit,
+  findPokemon,
 } from '../../features/pokemons'
 
 export const pageIsLoaded = createEvent()
 export const paginationClicked = createEvent()
 export const pageSizeChanged = createEvent()
-export const searchFieldChanged = createEvent()
 export const searchValueChanged = createEvent()
-
-const debouncedSearchFieldChanged = debounce(searchValueChanged, 400)
+export const searchFieldChanged = debounce(searchValueChanged, 400)
 
 export const $list = $pokemonsList.map(pokemons => Object.values(pokemons))
 export const $listIsLoading = pokemonListFetching.$isLoading.map(isLoading => isLoading)
@@ -43,8 +42,9 @@ forward({
   to: changeLimit,
 })
 
-searchFieldChanged.watch(value => {
-  debouncedSearchFieldChanged(value)
-})
-
 $searchValue.on(searchValueChanged, (_, value) => value)
+
+forward({
+  from: $searchValue.updates,
+  to: findPokemon,
+})

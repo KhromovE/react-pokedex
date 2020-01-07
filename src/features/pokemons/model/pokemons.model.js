@@ -4,7 +4,7 @@ import { getPokemonList, getPokemon } from '../api'
 import { changeCount } from './pagination.events'
 import { $offset, $limit } from './pagination.model'
 import { arrayToHashMap } from '../../../lib/utils'
-import { loadPokemonsList } from './pokemons.events'
+import { loadPokemonsList, findPokemon } from './pokemons.events'
 import { createFetching, STATUSES } from '../../../lib/fetching'
 import { LIMITS } from '../constants'
 
@@ -26,11 +26,24 @@ const fxLoadPokemonList = createEffect({
   },
 })
 
-export const pokemonListFetching = createFetching(fxLoadPokemonList, STATUSES.LOADING)
-
-$pokemonsList.on(fxLoadPokemonList.done, (_, { result: { pokemons } }) => {
-  return arrayToHashMap(pokemons, 'name')
+const fxFindPokemon = createEffect({
+  handler: getPokemon,
 })
+
+export const pokemonListFetching = createFetching(fxLoadPokemonList, STATUSES.LOADING)
+export const pokemonFetching = createFetching(fxFindPokemon, STATUSES.INITIAL)
+
+$pokemonsList
+  .on(fxLoadPokemonList.done, (_, { result: { pokemons } }) => arrayToHashMap(pokemons, 'name'))
+  .on(fxFindPokemon.done, (_, { result }) => {
+    const pokemons = []
+
+    if (result !== null) {
+      pokemons.push(result)
+    }
+
+    return arrayToHashMap(pokemons, 'name')
+  })
 
 const $pagination = combine({ offset: $offset, limit: $limit })
 
@@ -51,3 +64,11 @@ sample({
 })
 
 forward({ from: fxLoadPokemonList.done, to: changeCount })
+
+findPokemon.watch(query => {
+  if (query.length > 0) {
+    fxFindPokemon(query)
+  } else {
+    loadPokemonsList()
+  }
+})
