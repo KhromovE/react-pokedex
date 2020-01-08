@@ -63,7 +63,9 @@ sample({
   target: fxLoadPokemonList,
 })
 
-forward({ from: fxLoadPokemonList.done, to: changeCount })
+fxLoadPokemonList.done.watch(result => {
+  changeCount(result.count)
+})
 
 findPokemon.watch(query => {
   if (query.length > 0) {

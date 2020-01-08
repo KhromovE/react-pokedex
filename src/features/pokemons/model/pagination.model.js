@@ -7,7 +7,7 @@ export const $count = createStore(0)
 export const $offset = createStore(0)
 export const $limit = createStore(LIMITS[0])
 
-$count.on(changeCount, (_, { result: { count } }) => count)
+$count.on(changeCount, (_, count) => count)
 $limit.on(changeLimit, (_, limit) => limit)
 
 sample({

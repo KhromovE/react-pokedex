@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,14 +19,11 @@
     "react",
     "jsx-a11y",
     "import",
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "globals": {
-    "fetch": false,
-    "it": false,
-    "describe": false,
-    "expect": false,
-    "beforeEach": false
+    "fetch": false
   },
   "rules": {
     "prettier/prettier": [
