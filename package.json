@@ -5,7 +5,7 @@
   "homepage": "https://khromove.github.io/react-pokedex/",
   "dependencies": {
     "effector": "^20.9.1",
-    "effector-react": "^20.6.0",
+    "effector-react": "^20.6.3",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
