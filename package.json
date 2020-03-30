@@ -9,7 +9,7 @@
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.1",
     "react-paginate": "^6.3.2",
     "react-scripts": "^3.4.1",
     "styled-components": "^5.0.1"
